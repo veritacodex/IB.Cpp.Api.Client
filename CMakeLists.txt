@@ -1,9 +1,6 @@
-CMAKE_MINIMUM_REQUIRED(VERSION 3.22.1)
-PROJECT(IBApiClient)
-SET(CMAKE_CXX_STANDARD 23)
-SET(CMAKE_CXX_STANDARD_REQUIRED ON)
-SET(CXXFLAGS "-Wall -Wextra -Wpedantic -Werror -Wno-unused-parameter")
-SET(CMAKE_CXX_FLAGS "${CXXFLAGS}")
+cmake_minimum_required(VERSION 3.22)
+project(IB_Cpp_Api_Client)
 
-ADD_SUBDIRECTORY("src")
-ADD_SUBDIRECTORY("examples")
+set(CMAKE_CXX_STANDARD 23)
+
+add_executable(IB_Cpp_Api_Client main.cpp)
