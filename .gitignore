@@ -397,3 +397,4 @@ cmake-build-debug/
 cmake-build-debug-event-trace/
 *.a
 build/
+cmake-build-debug-system/
