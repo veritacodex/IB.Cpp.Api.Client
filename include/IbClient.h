@@ -3,5 +3,10 @@
 
 namespace IbApiClient {
 
+    class IbClient {
+    public:
+        void connect();
+    };
+
 }
 #endif // IBCLIENT_H
