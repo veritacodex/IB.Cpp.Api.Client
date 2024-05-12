@@ -19,6 +19,7 @@ rm ./*.o
 cp libbid.a "${ibkrSrcFolder}"
 
 # Build TWS API Client
+echo "Building TWS API Client library..."
 cp "${currentFolder}/main.cpp" "${ibkrSrcFolder}"
 cd "${ibkrSrcFolder}" || exit
 g++ -pthread -Wall -Wno-switch -Wpedantic -Wno-unused-function -std=c++20 -I. ./*.cpp libbid.a -olibIBApiClient.a
