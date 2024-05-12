@@ -1,7 +1,7 @@
 #!/bin/bash
 
-#Download Files
-#Change version to the latest at https://interactivebrokers.github.io
+# Download Files
+# Change version to the latest at https://interactivebrokers.github.io
 ibkrVersion="1019.04"
 ibkrFullName="twsapi_macunix.${ibkrVersion}"
 currentFolder=$PWD
@@ -18,13 +18,13 @@ make CC=gcc CALL_BY_REF=0 GLOBAL_RND=0 GLOBAL_FLAGS=0 UNCHANGED_BINARY_FLAGS=0
 rm ./*.o
 cp libbid.a "${ibkrSrcFolder}"
 
-#Build TWS API Client
+# Build TWS API Client
 cp "${currentFolder}/main.cpp" "${ibkrSrcFolder}"
 cd "${ibkrSrcFolder}" || exit
 g++ -pthread -Wall -Wno-switch -Wpedantic -Wno-unused-function -std=c++20 -I. ./*.cpp libbid.a -olibIBApiClient.a
 cp libIBApiClient.a "${currentFolder}"
 
-#Cleanup
+# Cleanup
 cd "${currentFolder}" || exit
 rm -rf IntelRDFPMathLib20U2
 rm -rf "${ibkrFullName}"

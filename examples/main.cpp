@@ -1,7 +1,9 @@
-#include <iostream>
+#include "IbClient.h"
 
 int main() {
 
-    std::cout << "this is an example" << std::endl;
+    IbApiClient::IbClient client;
+    client.methodOne();
+    client.methodTwo();
     return 0;
 }
