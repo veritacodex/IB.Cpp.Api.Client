@@ -1,3 +1,4 @@
+#include <iostream>
 #include "IbClient.h"
 
 void IbApiClient::IbClient::methodTwo() {
