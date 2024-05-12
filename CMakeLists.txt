@@ -1,6 +1,6 @@
-cmake_minimum_required(VERSION 3.22.1)
-project(IBApiClient)
-set(CMAKE_CXX_STANDARD 23)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.22.1)
+PROJECT(IBApiClient)
+SET(CMAKE_CXX_STANDARD 23)
 
-add_subdirectory("src")
-add_subdirectory("examples")
+ADD_SUBDIRECTORY("src")
+ADD_SUBDIRECTORY("examples")
