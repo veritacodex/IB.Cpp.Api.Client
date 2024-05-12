@@ -395,3 +395,4 @@ FodyWeavers.xsd
 .idea/
 cmake-build-debug/
 cmake-build-debug-event-trace/
+*.a
