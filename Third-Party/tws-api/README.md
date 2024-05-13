@@ -8,4 +8,4 @@ https://interactivebrokers.github.io
 
 Execute the command ``make`` to generate the shared library.
 
-Once the .so library is generated you can delete every *.cpp and *.h files from the folder
+Once the libTwsSocketClient.so library is generated you can delete every *.cpp and *.h files from this folder
