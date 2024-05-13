@@ -399,5 +399,5 @@ cmake-build-debug-event-trace/
 build/
 cmake-build-debug-system/
 cmake-build-default-system/
-lib/twsapi_macunix.1019.04
-lib/libIbGatewayClient.so
+Third-Party/twsapi_macunix.1019.04
+Third-Party/libIbGatewayClient.so

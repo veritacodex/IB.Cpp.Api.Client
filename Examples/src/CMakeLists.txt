@@ -1,5 +1,5 @@
 INCLUDE_DIRECTORIES(${IbApiClient_SOURCE_DIR}/Examples/inc)
-INCLUDE_DIRECTORIES(${IbApiClient_SOURCE_DIR}/LibProject/inc)
-LINK_DIRECTORIES(${IbApiClient_SOURCE_DIR}/LibProject/src)
+INCLUDE_DIRECTORIES(${IbApiClient_SOURCE_DIR}/Library/inc)
+LINK_DIRECTORIES(${IbApiClient_SOURCE_DIR}/Library/src)
 ADD_EXECUTABLE(Examples main.cpp)
-TARGET_LINK_LIBRARIES(Examples LibProject)
+TARGET_LINK_LIBRARIES(Examples Library)
