@@ -4,8 +4,6 @@
 
 namespace IbApiClient {
     class IbClient : public EWrapper {
-        public:
-            IbClient() = default;
     };
 }
 #endif // IBCLIENT_H
