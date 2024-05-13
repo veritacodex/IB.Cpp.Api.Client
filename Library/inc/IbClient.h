@@ -2,9 +2,10 @@
 #define IBCLIENT_H
 
 namespace IbApiClient {
-    class IbClient {
+    class IbClient : public EWrapper {
         public:
-        static void oneMethod();
+            IbClient() = default;
+            ~IbClient() = default;
     };
 }
 #endif // IBCLIENT_H
