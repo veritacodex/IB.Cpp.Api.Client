@@ -399,8 +399,8 @@ cmake-build-debug-event-trace/
 build/
 cmake-build-debug-system/
 cmake-build-default-system/
-Third-Party/twsapi_macunix.1019.04
-Third-Party/tws-api/libTwsSocketClient.so
-Third-Party/tws-api/*.cpp
-Third-Party/tws-api/*.h
-Third-Party/tws-api/makefile
+third-party/twsapi_macunix.1019.04
+third-party/tws-api/libTwsSocketClient.so
+third-party/tws-api/*.cpp
+third-party/tws-api/*.h
+third-party/tws-api/makefile
