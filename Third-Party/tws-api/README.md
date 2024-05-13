@@ -5,3 +5,7 @@ https://interactivebrokers.github.io
 - Normally the code that we are after is inside:
   - IBJts->source->cppclient->client
 - Copy *.cpp and *.h files to this folder
+
+Execute the command ``make`` to generate the shared library.
+
+Once the .so library is generated you can delete every *.cpp and *.h files from the folder
