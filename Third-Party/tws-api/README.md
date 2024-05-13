@@ -4,3 +4,4 @@ https://interactivebrokers.github.io
 - Download the Mac/Unix Version
 - Normally the code that we are after is inside:
   - IBJts->source->cppclient->client
+- Copy *.cpp and *.h files to this folder

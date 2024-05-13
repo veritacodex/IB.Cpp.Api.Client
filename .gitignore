@@ -401,3 +401,6 @@ cmake-build-debug-system/
 cmake-build-default-system/
 Third-Party/twsapi_macunix.1019.04
 Third-Party/libIbGatewayClient.so
+Third-Party/tws-api/*.cpp
+Third-Party/tws-api/*.h
+Third-Party/tws-api/makefile
