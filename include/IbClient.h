@@ -1,8 +1,6 @@
 #ifndef IBCLIENT_H
 #define IBCLIENT_H
 
-#include <string>
-
 namespace IbApiClient
 {
     class IbClient
