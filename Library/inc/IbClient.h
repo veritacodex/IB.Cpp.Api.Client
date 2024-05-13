@@ -2,7 +2,7 @@
 #define IBCLIENT_H
 
 namespace IbApiClient {
-    class IbClient : public EWrapper {
+    class IbClient {
         public:
             IbClient() = default;
             ~IbClient() = default;
