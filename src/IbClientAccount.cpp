@@ -1,6 +1,6 @@
 #include <iostream>
 #include "IbClient.h"
 
-void IbApiClient::IbClient::methodOne(const std::string &parameter) {
+void IbApiClient::IbClient::methodOne() {
     std::cout << "method one" << std::endl;
 }

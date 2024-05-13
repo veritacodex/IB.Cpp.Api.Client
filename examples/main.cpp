@@ -3,7 +3,7 @@
 int main() {
 
     IbApiClient::IbClient client;
-    client.methodOne("a parameter");
+    client.methodOne();
     client.methodTwo();
     return 0;
 }

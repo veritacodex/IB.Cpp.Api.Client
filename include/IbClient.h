@@ -10,7 +10,7 @@ namespace IbApiClient
     public:
         IbClient() = default;
         ~IbClient() = default;
-        static void methodOne(const std::string &parameter);
+        static void methodOne();
         static void methodTwo();
     };
 }
