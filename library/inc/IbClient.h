@@ -140,9 +140,6 @@ namespace IbApiClient {
                                     const std::string &timeZone,
                                     const std::vector<HistoricalSession> &sessions) override;
             void userInfo(int reqId, const std::string &whiteBrandingId) override;
-            void registerNotificationsListener(const std::function<void(const Notification &notification)> &notifications_listener) {
-                notificationsListener = notifications_listener;
-            }
         private:
             EReaderOSSignal m_osSignal{2000};
             EClientSocket *const m_pClient;
@@ -152,7 +149,6 @@ namespace IbApiClient {
             std::unique_ptr<EReader> m_pReader;
             bool m_extraAuth{false};
             std::string m_bboExchange;
-            std::function<void(const Notification &notification)> notificationsListener;
     };
 }
 #endif
