@@ -1,7 +1,7 @@
 #include <IbClient.h>
 #include <iostream>
-#include <NotImplementedException.h>
 #include <source_location>
+#include <model/NotImplementedException.h>
 
 void IbApiClient::IbClient::tickPrice(TickerId tickerId, TickType field, double price, const TickAttrib &attrib) {
     const std::source_location location = std::source_location::current();

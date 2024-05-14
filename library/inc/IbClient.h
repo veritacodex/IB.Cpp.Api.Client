@@ -5,9 +5,9 @@
 #include <EReader.h>
 #include <EReaderOSSignal.h>
 #include <EWrapper.h>
-
-#include <ConnectionState.h>
 #include <functional>
+#include <model/ConnectionState.h>
+#include <model/Notification.h>
 
 namespace IbApiClient {
     class IbClient final : public EWrapper {
@@ -140,7 +140,7 @@ namespace IbApiClient {
                                     const std::string &timeZone,
                                     const std::vector<HistoricalSession> &sessions) override;
             void userInfo(int reqId, const std::string &whiteBrandingId) override;
-            void registerNotificationsListener(const std::function<void(const std::string &message)> &notifications_listener) {
+            void registerNotificationsListener(const std::function<void(const Notification &notification)> &notifications_listener) {
                 notificationsListener = notifications_listener;
             }
         private:
@@ -152,7 +152,7 @@ namespace IbApiClient {
             std::unique_ptr<EReader> m_pReader;
             bool m_extraAuth{false};
             std::string m_bboExchange;
-            std::function<void(const std::string &message)> notificationsListener;
+            std::function<void(const Notification &notification)> notificationsListener;
     };
 }
 #endif
