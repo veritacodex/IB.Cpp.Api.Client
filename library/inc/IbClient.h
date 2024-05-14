@@ -1,10 +1,10 @@
 #ifndef IBAPICLIENT_IBCLIENT_H
 #define IBAPICLIENT_IBCLIENT_H
 
-#include "../../third-party/tws-api/EWrapper.h"
-#include "../../third-party/tws-api/EReaderOSSignal.h"
 #include "../../third-party/tws-api/EClientSocket.h"
 #include "../../third-party/tws-api/EReader.h"
+#include "../../third-party/tws-api/EReaderOSSignal.h"
+#include "../../third-party/tws-api/EWrapper.h"
 
 #include <ConnectionState.h>
 
@@ -14,9 +14,9 @@ namespace IbApiClient
     {
     public:
         IbClient();
-        ~IbClient();
+        ~IbClient() override;
 
-        void connect(const char *host, int port, int clientId = 0);
+        void connect(const char *host, const int &port, const int &clientId);
         void disconnect() const;
         bool isConnected() const;
 
