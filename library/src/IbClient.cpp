@@ -1,5 +1,4 @@
 #include <IbClient.h>
-#include <iostream>
 #include <memory>
 
 IbApiClient::IbClient::IbClient() : m_pClient(new EClientSocket(this, &m_osSignal)) {
@@ -9,21 +8,23 @@ IbApiClient::IbClient::IbClient() : m_pClient(new EClientSocket(this, &m_osSigna
 IbApiClient::IbClient::~IbClient() {
     disconnect();
 
-    if( m_pReader )
+    if (m_pReader)
         m_pReader.reset();
 
     delete m_pClient;
 }
 
 void IbApiClient::IbClient::connect(const char *host, const int &port, const int &clientId) {
-    std::cout << "Connecting to host: " << host << " on port:" << port << " with clientId:" << clientId << std::endl;
+    const std::string message = "Connecting to host: " + static_cast<std::string>(host) + " on port:" + std::to_string(port) +
+                                " with clientId:" + std::to_string(clientId);
+    spdlog::get("console")->info(message);
 
     if (m_pClient->eConnect(host, port, clientId, m_extraAuth)) {
-        std::cout << "Connected" << std::endl;
+        spdlog::get("console")->info("Connected");
         m_pReader = std::make_unique<EReader>(m_pClient, &m_osSignal);
         m_pReader->start();
     } else
-        std::cout << "Cannot connect" << std::endl;
+        spdlog::get("stderr")->info("Cannot connect");
 }
 
 void IbApiClient::IbClient::disconnect() const {
@@ -33,4 +34,3 @@ void IbApiClient::IbClient::disconnect() const {
 bool IbApiClient::IbClient::isConnected() const {
     return m_pClient->isConnected();
 }
-

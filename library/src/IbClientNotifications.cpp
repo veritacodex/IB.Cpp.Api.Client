@@ -2,12 +2,12 @@
 #include <model/Notification.h>
 
 inline void displayNotification(const IbApiClient::Notification &notification) {
-    std::string output = " Id:" + std::to_string(notification.id);
+    std::string output = "Id:" + std::to_string(notification.id);
     output += " ErrorCode:" + std::to_string(notification.errorCode);
     output += " Message:" + notification.errorString;
     output += " Json:" + notification.advancedOrderRejectJson;
     if (notification.id == -1) {
-        spdlog::get("stderr")->error(output);
+        spdlog::get("stderr")->info(output);
     }
     else
         spdlog::get("console")->info(output);
