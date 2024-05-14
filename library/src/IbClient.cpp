@@ -5,13 +5,7 @@ IbApiClient::IbClient::IbClient() :
     , m_pClient(new EClientSocket(this, &m_osSignal))
 	, m_sleepDeadline(0)
 	, m_orderId(0)
+    , m_extraAuth(false)
 {
     m_state = ConnectionState::ST_CONNECT;
-    m_extraAuth = false;
-}
-
-IbApiClient::IbClient::~IbClient()
-{
-	if( m_pReader )
-		m_pReader.reset();
 }
