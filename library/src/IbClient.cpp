@@ -3,6 +3,8 @@
 #include <memory>
 
 IbApiClient::IbClient::IbClient() : m_pClient(new EClientSocket(this, &m_osSignal)) {
+    console = spdlog::stdout_color_mt("console");
+    err_logger = spdlog::stderr_color_mt("stderr");
 }
 IbApiClient::IbClient::~IbClient() {
     disconnect();

@@ -13,8 +13,9 @@ FILE(GLOB IBAPICLIENT_SRC CONFIGURE_DEPENDS
         "${IBAPICLIENT}/*.cpp"
 )
 
+FIND_PACKAGE(spdlog REQUIRED)
+
 ADD_LIBRARY(IbApiClient IbClient.cpp ${TWSAPI_SRC} ${IBAPICLIENT_SRC})
 TARGET_LINK_DIRECTORIES(IbApiClient PUBLIC ${CMAKE_SOURCE_DIR}/third-party/tws-api)
 TARGET_LINK_DIRECTORIES(IbApiClient PUBLIC ${CMAKE_SOURCE_DIR}/third-party/tws-api/lib)
-TARGET_LINK_LIBRARIES(IbApiClient PUBLIC libTwsSocketClient.so)
-TARGET_LINK_LIBRARIES(IbApiClient PUBLIC libbid.so)
+TARGET_LINK_LIBRARIES(IbApiClient PUBLIC libTwsSocketClient.so PUBLIC libbid.so PUBLIC spdlog::spdlog_header_only)

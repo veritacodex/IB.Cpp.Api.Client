@@ -7,7 +7,9 @@
 #include <EWrapper.h>
 #include <functional>
 #include <model/ConnectionState.h>
-#include <model/Notification.h>
+#include <spdlog/logger.h>
+#include <spdlog/spdlog.h>
+#include <spdlog/sinks/stdout_color_sinks.h>
 
 namespace IbApiClient {
     class IbClient final : public EWrapper {
@@ -149,6 +151,8 @@ namespace IbApiClient {
             std::unique_ptr<EReader> m_pReader;
             bool m_extraAuth{false};
             std::string m_bboExchange;
+            std::shared_ptr<spdlog::logger> console;
+            std::shared_ptr<spdlog::logger> err_logger;
     };
 }
 #endif

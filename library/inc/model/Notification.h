@@ -4,7 +4,6 @@
 #include <utility>
 namespace IbApiClient {
     struct Notification {
-        std::chrono::system_clock::time_point at = std::chrono::system_clock::now();
         int id;
         int errorCode;
         std::string errorString;
