@@ -25,6 +25,8 @@ void IbApiClient::IbClient::connect(const char *host, const int &port, const int
         m_pReader->start();
     } else
         spdlog::get("stderr")->info("Cannot connect");
+
+    std::this_thread::sleep_for(std::chrono::seconds(2));
 }
 
 void IbApiClient::IbClient::disconnect() const {
@@ -33,4 +35,9 @@ void IbApiClient::IbClient::disconnect() const {
 
 bool IbApiClient::IbClient::isConnected() const {
     return m_pClient->isConnected();
+}
+
+void IbApiClient::IbClient::connectAck() {
+    if (!m_extraAuth && m_pClient->asyncEConnect())
+        m_pClient->startApi();
 }

@@ -6,7 +6,9 @@
 #include <EReaderOSSignal.h>
 #include <EWrapper.h>
 #include <functional>
+#include <model/AccountSummaryTags.h>
 #include <model/ConnectionState.h>
+#include <model/RequestId.h>
 #include <spdlog/logger.h>
 #include <spdlog/spdlog.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
@@ -142,6 +144,9 @@ namespace IbApiClient {
                                     const std::string &timeZone,
                                     const std::vector<HistoricalSession> &sessions) override;
             void userInfo(int reqId, const std::string &whiteBrandingId) override;
+            void requestAccountSummary() {
+                m_pClient->reqAccountSummary(RequestId::AccountRequestId, "All", AccountSummaryTags::getAllTags());
+            }
         private:
             EReaderOSSignal m_osSignal{2000};
             EClientSocket *const m_pClient;

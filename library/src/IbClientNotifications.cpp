@@ -16,9 +16,5 @@ void IbApiClient::IbClient::error(const int id, const int errorCode, const std::
                                   const std::string &advancedOrderRejectJson) {
     const Notification notification(id, errorCode, errorString, advancedOrderRejectJson);
     displayNotification(notification);
+}
 
-}
-void IbApiClient::IbClient::connectAck() {
-    const Notification notification(1, 0, "connectAck received", "");
-    displayNotification(notification);
-}
