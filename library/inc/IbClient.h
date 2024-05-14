@@ -17,13 +17,13 @@ namespace IbApiClient
         ~IbClient() = default;
 
     private:
-        EReaderOSSignal m_osSignal;
+        EReaderOSSignal m_osSignal{2000};
         EClientSocket *const m_pClient;
-        ConnectionState m_state;
-        time_t m_sleepDeadline;
-        OrderId m_orderId;
+        ConnectionState m_state{ConnectionState::ST_CONNECT};
+        time_t m_sleepDeadline{0};
+        OrderId m_orderId{0};
         std::unique_ptr<EReader> m_pReader;
-        bool m_extraAuth;
+        bool m_extraAuth{false};
         std::string m_bboExchange;
     };
 }
