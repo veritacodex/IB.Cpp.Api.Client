@@ -14,7 +14,11 @@ namespace IbApiClient
     {
     public:
         IbClient();
-        ~IbClient() = default;
+        ~IbClient();
+
+        void connect(const char *host, int port, int clientId = 0);
+        void disconnect() const;
+        bool isConnected() const;
 
     private:
         EReaderOSSignal m_osSignal{2000};
