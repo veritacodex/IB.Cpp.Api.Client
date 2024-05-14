@@ -20,9 +20,8 @@ namespace IbApiClient {
 
             void tickPrice(TickerId tickerId, TickType field, double price, const TickAttrib &attrib) override;
             void tickSize(TickerId tickerId, TickType field, Decimal size) override;
-            void tickOptionComputation(TickerId tickerId, TickType tickType, int tickAttrib, double impliedVol,
-                                       double delta, double optPrice, double pvDividend, double gamma, double vega,
-                                       double theta,
+            void tickOptionComputation(TickerId tickerId, TickType tickType, int tickAttrib, double impliedVol, double delta,
+                                       double optPrice, double pvDividend, double gamma, double vega, double theta,
                                        double undPrice) override;
             void tickGeneric(TickerId tickerId, TickType tickType, double value) override;
             void tickString(TickerId tickerId, TickType tickType, const std::string &value) override;
@@ -39,9 +38,8 @@ namespace IbApiClient {
             void connectionClosed() override;
             void updateAccountValue(const std::string &key, const std::string &val, const std::string &currency,
                                     const std::string &accountName) override;
-            void updatePortfolio(const Contract &contract, Decimal position, double marketPrice, double marketValue,
-                                 double averageCost, double unrealizedPNL, double realizedPNL,
-                                 const std::string &accountName) override;
+            void updatePortfolio(const Contract &contract, Decimal position, double marketPrice, double marketValue, double averageCost,
+                                 double unrealizedPNL, double realizedPNL, const std::string &accountName) override;
             void updateAccountTime(const std::string &timeStamp) override;
             void accountDownloadEnd(const std::string &accountName) override;
             void nextValidId(OrderId orderId) override;
@@ -142,8 +140,8 @@ namespace IbApiClient {
                                     const std::string &timeZone,
                                     const std::vector<HistoricalSession> &sessions) override;
             void userInfo(int reqId, const std::string &whiteBrandingId) override;
-            void registerNotificationsListener(void (*notifications_listener)(const std::string &message)) {
-                notificationsListener= notifications_listener;
+            void registerNotificationsListener(const std::function<void(const std::string &message)> &notifications_listener) {
+                notificationsListener = notifications_listener;
             }
         private:
             EReaderOSSignal m_osSignal{2000};
@@ -154,7 +152,7 @@ namespace IbApiClient {
             std::unique_ptr<EReader> m_pReader;
             bool m_extraAuth{false};
             std::string m_bboExchange;
-            void (*notificationsListener)(const std::string &message);
+            std::function<void(const std::string &message)> notificationsListener;
     };
 }
 #endif
