@@ -7,6 +7,7 @@
 #include "../../third-party/tws-api/EWrapper.h"
 
 #include <ConnectionState.h>
+#include <functional>
 
 namespace IbApiClient {
     class IbClient : public EWrapper {
@@ -141,7 +142,8 @@ namespace IbApiClient {
                                     const std::string &timeZone,
                                     const std::vector<HistoricalSession> &sessions) override;
             void userInfo(int reqId, const std::string &whiteBrandingId) override;
-            void registerNotificationsListener(void (*notifications_listener)(const std::string &message)) {
+            void registerNotificationsListener(
+                const std::function<void()> &notifications_listener(const std::string &message)) {
                 notificationsListener = notifications_listener;
             }
         private:
@@ -153,7 +155,7 @@ namespace IbApiClient {
             std::unique_ptr<EReader> m_pReader;
             bool m_extraAuth{false};
             std::string m_bboExchange;
-            void (*notificationsListener)(const std::string &message);
+            const std::function<void()> &(*notificationsListener)(const std::string &message);
     };
 }
 #endif
