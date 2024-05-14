@@ -143,7 +143,7 @@ namespace IbApiClient {
                                     const std::vector<HistoricalSession> &sessions) override;
             void userInfo(int reqId, const std::string &whiteBrandingId) override;
             void registerNotificationsListener(void (*notifications_listener)(const std::string &message)) {
-                notificationsListener2= notifications_listener;
+                notificationsListener= notifications_listener;
             }
         private:
             EReaderOSSignal m_osSignal{2000};
@@ -154,7 +154,7 @@ namespace IbApiClient {
             std::unique_ptr<EReader> m_pReader;
             bool m_extraAuth{false};
             std::string m_bboExchange;
-            void (*notificationsListener2)(const std::string &message);
+            void (*notificationsListener)(const std::string &message);
     };
 }
 #endif

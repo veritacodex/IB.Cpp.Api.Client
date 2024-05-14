@@ -3,5 +3,5 @@
 
 void IbApiClient::IbClient::error(int id, int errorCode, const std::string &errorString,
                                   const std::string &advancedOrderRejectJson) {
-    notificationsListener2(errorString);
+    notificationsListener(errorString);
 }
