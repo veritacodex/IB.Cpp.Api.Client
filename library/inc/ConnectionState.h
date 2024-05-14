@@ -3,7 +3,7 @@
 
 namespace IbApiClient
 {
-	enum ConnectionState
+	enum class ConnectionState
 	{
 		ST_CONNECT,
 		ST_TICKDATAOPERATION,
