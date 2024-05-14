@@ -5,8 +5,6 @@
 IbApiClient::IbClient::IbClient() : m_pClient(new EClientSocket(this, &m_osSignal)) {
 }
 
-IbApiClient::IbClient::~IbClient() { disconnect(); }
-
 void IbApiClient::IbClient::connect(const char *host, const int &port, const int &clientId) {
     std::cout << "Connecting to host: " << host << " on port:" << port << " with clientId:" << clientId << std::endl;
 

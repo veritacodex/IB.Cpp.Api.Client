@@ -12,8 +12,6 @@ namespace IbApiClient {
     class IbClient : public EWrapper {
         public:
             IbClient();
-            ~IbClient() override;
-
             void connect(const char *host, const int &port, const int &clientId);
             void disconnect() const;
             bool isConnected() const;
