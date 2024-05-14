@@ -3,5 +3,5 @@
 
 void IbApiClient::IbClient::error(int id, int errorCode, const std::string &errorString,
                                   const std::string &advancedOrderRejectJson) {
-    std::cout << "Notification" << std::endl;
+    throw std::logic_error("error function not implemented");
 }
