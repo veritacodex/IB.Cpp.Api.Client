@@ -1,16 +1,16 @@
 #ifndef IBAPICLIENT_IBCLIENT_H
 #define IBAPICLIENT_IBCLIENT_H
 
-#include "../../third-party/tws-api/EClientSocket.h"
-#include "../../third-party/tws-api/EReader.h"
-#include "../../third-party/tws-api/EReaderOSSignal.h"
-#include "../../third-party/tws-api/EWrapper.h"
+#include <EClientSocket.h>
+#include <EReader.h>
+#include <EReaderOSSignal.h>
+#include <EWrapper.h>
 
 #include <ConnectionState.h>
 #include <functional>
 
 namespace IbApiClient {
-    class IbClient : public EWrapper {
+    class IbClient final : public EWrapper {
         public:
             IbClient();
             ~IbClient() override;
