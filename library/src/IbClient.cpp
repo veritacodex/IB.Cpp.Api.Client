@@ -81,10 +81,7 @@ void IbApiClient::IbClient::execDetails(int reqId, const Contract &contract, con
 }
 void IbApiClient::IbClient::execDetailsEnd(int reqId) {
 }
-void IbApiClient::IbClient::error(int id, int errorCode, const std::string &errorString,
-                                  const std::string &advancedOrderRejectJson) {
-    std::cout << "Notification" << std::endl;
-}
+
 void IbApiClient::IbClient::updateMktDepth(TickerId id, int position, int operation, int side, double price,
     Decimal size) {
 }
