@@ -7,7 +7,7 @@ void IbApiClient::IbClient::managedAccounts(const std::string &accountsList) {
     const std::vector<std::string> accounts = split(accountsList, ',');
     spdlog::get("console")->info("Managed accounts:" + accountsList);
     for (auto &id: accounts) {
-        Accounts.insert({id, Account(id)});
+        Accounts.emplace(id, Account(id));
     }
 }
 void IbApiClient::IbClient::accountSummary(int reqId, const std::string &account, const std::string &tag,
