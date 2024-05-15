@@ -1,14 +1,16 @@
 #include <IbClient.h>
-
 #include "model/AccountSummaryTags.h"
 #include "model/AccountUpdateTags.h"
-#include "utils/StringUtils.h"
+#include <utils/StringUtils.h>
+#include <ranges>
 
 void IbApiClient::IbClient::managedAccounts(const std::string &accountsList) {
     const std::vector<std::string> accounts = split(accountsList, ',');
     spdlog::get("console")->info("Managed accounts:" + accountsList);
     for (auto &id: accounts) {
         m_accounts.try_emplace(id, id);
+
+        spdlog::get("console")->info("Account updates requested");
         m_pClient->reqAccountUpdates(true, id);
     }
 }
@@ -355,8 +357,8 @@ void IbApiClient::IbClient::updatePortfolio(const Contract &contract, Decimal po
     // throw NotImplementedException();
 }
 void IbApiClient::IbClient::updateAccountTime(const std::string &timeStamp) {
-    for(auto &account : m_accounts) {
-        account.second.timeStamp = timeStamp;
+    for (auto &account: m_accounts | std::ranges::views::values) {
+        account.timeStamp = timeStamp;
     }
 }
 void IbApiClient::IbClient::accountDownloadEnd(const std::string &accountName) {
