@@ -4,11 +4,6 @@
 IbApiClient::IbClient::IbClient() : m_pClient(new EClientSocket(this, &m_osSignal)) {
     consoleLogger = spdlog::stdout_color_mt("console");
 }
-IbApiClient::IbClient::~IbClient() {
-    disconnect();
-    if (m_pReader)
-        m_pReader.reset();
-}
 void IbApiClient::IbClient::connect(const char *host, const int &port, const int &clientId) {
     const std::string message = fmt::format("Connecting to host:{} on port:{} with clientId:{}",
                                             static_cast<std::string>(host),

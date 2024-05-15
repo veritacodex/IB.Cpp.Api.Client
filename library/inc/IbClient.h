@@ -17,7 +17,6 @@ namespace IbApiClient {
     class IbClient final : public EWrapper {
         public:
             IbClient();
-            ~IbClient() override;
 
             void listen();
             void requestAccountSummary() const;
