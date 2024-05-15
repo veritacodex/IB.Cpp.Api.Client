@@ -17,4 +17,3 @@ void IbApiClient::IbClient::error(const int id, const int errorCode, const std::
     const Notification notification(id, errorCode, errorString, advancedOrderRejectJson);
     displayNotification(notification);
 }
-

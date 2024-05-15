@@ -6,9 +6,7 @@
 #include <EReaderOSSignal.h>
 #include <EWrapper.h>
 #include <functional>
-#include <model/AccountSummaryTags.h>
 #include <model/ConnectionState.h>
-#include <model/RequestId.h>
 #include <spdlog/logger.h>
 #include <spdlog/spdlog.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
@@ -19,7 +17,7 @@ namespace IbApiClient {
             IbClient();
             ~IbClient() override;
             void requestAccountSummary() const;
-#pragma region IBKR functions
+
             void connect(const char *host, const int &port, const int &clientId);
             void disconnect() const;
             [[nodiscard]] bool isConnected() const;
@@ -145,7 +143,6 @@ namespace IbApiClient {
                                     const std::string &timeZone,
                                     const std::vector<HistoricalSession> &sessions) override;
             void userInfo(int reqId, const std::string &whiteBrandingId) override;
-#pragma endregion
         private:
             EReaderOSSignal m_osSignal{2000};
             EClientSocket *const m_pClient;
