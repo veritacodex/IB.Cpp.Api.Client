@@ -11,8 +11,10 @@ IbApiClient::IbClient::~IbClient() {
     delete m_pClient;
 }
 void IbApiClient::IbClient::connect(const char *host, const int &port, const int &clientId) {
-    const std::string message = "Connecting to host: " + static_cast<std::string>(host) + " on port:" + std::to_string(port) +
-                                " with clientId:" + std::to_string(clientId);
+    const std::string message = fmt::format("Connecting to host:{} on port:{} with clientId:{}",
+                                            static_cast<std::string>(host),
+                                            std::to_string(port),
+                                            std::to_string(clientId));
     spdlog::get("console")->info(message);
 
     if (m_pClient->eConnect(host, port, clientId, m_extraAuth)) {
