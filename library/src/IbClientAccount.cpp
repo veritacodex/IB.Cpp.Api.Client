@@ -1,4 +1,5 @@
 #include <IbClient.h>
+
 #include "model/AccountSummaryTags.h"
 #include "model/AccountUpdateTags.h"
 #include "utils/StringUtils.h"
@@ -354,8 +355,9 @@ void IbApiClient::IbClient::updatePortfolio(const Contract &contract, Decimal po
     // throw NotImplementedException();
 }
 void IbApiClient::IbClient::updateAccountTime(const std::string &timeStamp) {
-    // std::cerr << "Error: function updateAccountTime not implemented" << std::endl;
-    // throw NotImplementedException();
+    for(auto &account : m_accounts) {
+        account.second.timeStamp = timeStamp;
+    }
 }
 void IbApiClient::IbClient::accountDownloadEnd(const std::string &accountName) {
     m_onAccountUpdateReceiver(m_accounts);

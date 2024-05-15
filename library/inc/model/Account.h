@@ -5,6 +5,7 @@
 
 namespace IbApiClient {
     struct Account {
+        std::string timeStamp{};
         std::string accountCode{};
         std::string accountOrGroupBase{};
         std::string accountOrGroupEur{};
@@ -153,6 +154,7 @@ namespace IbApiClient {
         }
         [[nodiscard]] std::string toString() const {
             std::string output = "Account (" + accountCode + ")\n";
+            output += fmt::format("TimeStamp:{}\n", timeStamp);
             output += fmt::format("AccountCode:{}\n", accountCode);
             output += fmt::format("AccountOrGroupBase:{}\n", accountOrGroupBase);
             output += fmt::format("AccountOrGroupEur:{}\n", accountOrGroupEur);
