@@ -1,8 +1,8 @@
 #include <IbClient.h>
+#include <ranges>
+#include <utils/StringUtils.h>
 #include "model/AccountSummaryTags.h"
 #include "model/AccountUpdateTags.h"
-#include <utils/StringUtils.h>
-#include <ranges>
 
 void IbApiClient::IbClient::managedAccounts(const std::string &accountsList) {
     const std::vector<std::string> accounts = split(accountsList, ',');
@@ -348,13 +348,14 @@ void IbApiClient::IbClient::updateAccountValue(const std::string &key, const std
         m_accounts[accountName].warrantValueUsd = stod(val);
 }
 void IbApiClient::IbClient::accountSummaryEnd(int reqId) {
-    m_onAccountUpdateReceiver(m_accounts);
+    m_onAccountUpdateReceived(m_accounts);
 }
-void IbApiClient::IbClient::updatePortfolio(const Contract &contract, Decimal position, double marketPrice,
-                                            double marketValue, double averageCost, double unrealizedPNL,
-                                            double realizedPNL, const std::string &accountName) {
-    // std::cerr << "Error: function updatePortfolio not implemented" << std::endl;
-    // throw NotImplementedException();
+void IbApiClient::IbClient::updatePortfolio(const Contract &contract, Decimal position, double marketPrice, double marketValue,
+                                            double averageCost, double unrealizedPNL, double realizedPNL, const std::string &accountName) {
+    Position pos(contract);
+    pos.setValues(position, marketPrice, marketValue, averageCost, unrealizedPNL, realizedPNL, accountName);
+    m_positions.try_emplace(contract.conId, pos);
+    m_onPortfolioUpdateReceived(m_positions);
 }
 void IbApiClient::IbClient::updateAccountTime(const std::string &timeStamp) {
     for (auto &account: m_accounts | std::ranges::views::values) {
@@ -362,5 +363,5 @@ void IbApiClient::IbClient::updateAccountTime(const std::string &timeStamp) {
     }
 }
 void IbApiClient::IbClient::accountDownloadEnd(const std::string &accountName) {
-    m_onAccountUpdateReceiver(m_accounts);
+    m_onAccountUpdateReceived(m_accounts);
 }

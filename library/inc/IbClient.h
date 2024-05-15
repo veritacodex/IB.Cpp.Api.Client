@@ -11,6 +11,7 @@
 #include <spdlog/spdlog.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
 #include "model/Account.h"
+#include "model/Position.h"
 
 namespace IbApiClient {
     class IbClient final : public EWrapper {
@@ -145,8 +146,13 @@ namespace IbApiClient {
                                     const std::string &timeZone,
                                     const std::vector<HistoricalSession> &sessions) override;
             void userInfo(int reqId, const std::string &whiteBrandingId) override;
-            void onAccountUpdate(const std::function<void(const std::map<std::string, Account, std::less<>> &accounts)> &onAccountUpdateReceiver) {
-                m_onAccountUpdateReceiver = onAccountUpdateReceiver;
+            void onAccountUpdate(
+                const std::function<void(const std::map<std::string, Account, std::less<> > &accounts)> &onAccountUpdateReceived) {
+                m_onAccountUpdateReceived = onAccountUpdateReceived;
+            }
+            void onPortfolioUpdate(
+                const std::function<void(const std::map<long, Position, std::less<> > &positions)> &onPortfolioUpdateReceived) {
+                m_onPortfolioUpdateReceived = onPortfolioUpdateReceived;
             }
         private:
             EReaderOSSignal m_osSignal{2000};
@@ -158,8 +164,10 @@ namespace IbApiClient {
             bool m_extraAuth{false};
             std::string m_bboExchange;
             std::shared_ptr<spdlog::logger> consoleLogger;
-            std::map<std::string, Account, std::less<>> m_accounts;
-            std::function<void(const std::map<std::string, Account, std::less<>> &accounts)> m_onAccountUpdateReceiver;
+            std::map<std::string, Account, std::less<> > m_accounts;
+            std::map<long, Position, std::less<> > m_positions;
+            std::function<void(const std::map<std::string, Account, std::less<> > &accounts)> m_onAccountUpdateReceived;
+            std::function<void(const std::map<long, Position, std::less<> > &positions)> m_onPortfolioUpdateReceived;
     };
 }
 #endif
