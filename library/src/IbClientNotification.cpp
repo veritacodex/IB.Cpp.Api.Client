@@ -7,7 +7,7 @@ inline void displayNotification(const IbApiClient::Notification &notification) {
     output += " Message:" + notification.errorString;
     output += " Json:" + notification.advancedOrderRejectJson;
     if (notification.id == -1) {
-        spdlog::get("stderr")->error(output);
+        spdlog::get("console")->error(output);
     }
     else
         spdlog::get("console")->info(output);

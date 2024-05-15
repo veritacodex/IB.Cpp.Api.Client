@@ -115,10 +115,6 @@ void IbApiClient::IbClient::updateNewsBulletin(int msgId, int msgType, const std
     std::cerr << "Error: function updateNewsBulletin not implemented" << std::endl;
     throw NotImplementedException();
 }
-void IbApiClient::IbClient::managedAccounts(const std::string &accountsList) {
-    std::cerr << "Error: function managedAccounts not implemented" << std::endl;
-    throw NotImplementedException();
-}
 void IbApiClient::IbClient::receiveFA(faDataType pFaDataType, const std::string &cxml) {
     std::cerr << "Error: function receiveFA not implemented" << std::endl;
     throw NotImplementedException();

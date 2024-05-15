@@ -2,8 +2,7 @@
 #include <memory>
 
 IbApiClient::IbClient::IbClient() : m_pClient(new EClientSocket(this, &m_osSignal)) {
-    console = spdlog::stdout_color_mt("console");
-    err_logger = spdlog::stderr_color_mt("stderr");
+    consoleLogger = spdlog::stdout_color_mt("console");
 }
 IbApiClient::IbClient::~IbClient() {
     disconnect();
@@ -23,7 +22,7 @@ void IbApiClient::IbClient::connect(const char *host, const int &port, const int
         m_pReader = std::make_unique<EReader>(m_pClient, &m_osSignal);
         m_pReader->start();
     } else
-        spdlog::get("stderr")->info("Cannot connect");
+        spdlog::get("console")->error("Cannot connect");
 
     std::this_thread::sleep_for(std::chrono::seconds(2));
 }

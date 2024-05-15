@@ -16,6 +16,8 @@ namespace IbApiClient {
         public:
             IbClient();
             ~IbClient() override;
+
+            void listen();
             void requestAccountSummary() const;
 
             void connect(const char *host, const int &port, const int &clientId);
@@ -152,8 +154,7 @@ namespace IbApiClient {
             std::unique_ptr<EReader> m_pReader;
             bool m_extraAuth{false};
             std::string m_bboExchange;
-            std::shared_ptr<spdlog::logger> console;
-            std::shared_ptr<spdlog::logger> err_logger;
+            std::shared_ptr<spdlog::logger> consoleLogger;
     };
 }
 #endif

@@ -6,6 +6,8 @@ int main() {
     if (client.isConnected()) {
         client.requestAccountSummary();
     }
-    std::getchar();
+    while(client.isConnected()) {
+        client.listen();
+    }
     return 0;
 }
