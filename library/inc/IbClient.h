@@ -156,7 +156,7 @@ namespace IbApiClient {
             bool m_extraAuth{false};
             std::string m_bboExchange;
             std::shared_ptr<spdlog::logger> consoleLogger;
-            std::map<std::string, Account> Accounts;
+            std::map<std::string, Account, std::less<>> Accounts;
     };
 }
 #endif
