@@ -55,6 +55,7 @@ void IbApiClient::IbClient::accountSummary(int reqId, const std::string &account
     else if (tag == AccountSummaryTags::TotalCashValue)
         Accounts[account].totalCashValue = stod(value);
     else {
+        spdlog::get("console")->error("Account summary tag not considered:" + tag);
     }
 }
 void IbApiClient::IbClient::accountSummaryEnd(int reqId) {
