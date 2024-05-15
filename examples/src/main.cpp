@@ -2,7 +2,6 @@
 #include <ranges>
 
 void onAccountUpdateReceiver(const std::map<std::string, IbApiClient::Account, std::less<>> &accounts) {
-    spdlog::get("console")->info("oooooooooo");
     for (const auto &account: accounts | std::ranges::views::values) {
         spdlog::get("console")->info(account.toString());
     }
