@@ -75,10 +75,6 @@ void IbApiClient::IbClient::accountDownloadEnd(const std::string &accountName) {
     std::cerr << "Error: function accountDownloadEnd not implemented" << std::endl;
     throw NotImplementedException();
 }
-void IbApiClient::IbClient::nextValidId(OrderId orderId) {
-    std::cerr << "Error: function nextValidId not implemented" << std::endl;
-    throw NotImplementedException();
-}
 void IbApiClient::IbClient::contractDetails(int reqId, const ContractDetails &contractDetails) {
     std::cerr << "Error: function contractDetails not implemented" << std::endl;
     throw NotImplementedException();
@@ -179,15 +175,6 @@ void IbApiClient::IbClient::position(const std::string &account, const Contract 
 }
 void IbApiClient::IbClient::positionEnd() {
     std::cerr << "Error: function positionEnd not implemented" << std::endl;
-    throw NotImplementedException();
-}
-void IbApiClient::IbClient::accountSummary(int reqId, const std::string &account, const std::string &tag,
-                                           const std::string &value, const std::string &curency) {
-    std::cerr << "Error: function accountSummary not implemented" << std::endl;
-    throw NotImplementedException();
-}
-void IbApiClient::IbClient::accountSummaryEnd(int reqId) {
-    std::cerr << "Error: function accountSummaryEnd not implemented" << std::endl;
     throw NotImplementedException();
 }
 void IbApiClient::IbClient::verifyMessageAPI(const std::string &apiData) {

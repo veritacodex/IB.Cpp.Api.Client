@@ -3,7 +3,7 @@
 
 void IbApiClient::IbClient::listen() {
     const time_t now = time(nullptr);
-    std::cout << static_cast<int>(m_state) << std::endl;
+    //std::cout << static_cast<int>(m_state) << std::endl;
     switch (m_state) {
         case ConnectionState::ST_PING_ACK:
             if( m_sleepDeadline < now) {

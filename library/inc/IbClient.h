@@ -11,6 +11,8 @@
 #include <spdlog/spdlog.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
 
+#include "model/Account.h"
+
 namespace IbApiClient {
     class IbClient final : public EWrapper {
         public:
@@ -155,6 +157,7 @@ namespace IbApiClient {
             bool m_extraAuth{false};
             std::string m_bboExchange;
             std::shared_ptr<spdlog::logger> consoleLogger;
+            std::map<std::string, Account> Accounts;
     };
 }
 #endif

@@ -33,7 +33,11 @@ bool IbApiClient::IbClient::isConnected() const {
     return m_pClient->isConnected();
 }
 void IbApiClient::IbClient::connectAck() {
-    spdlog::get("console")->info("starting api");
+    spdlog::get("console")->info("Starting api");
     if (!m_extraAuth && m_pClient->asyncEConnect())
         m_pClient->startApi();
+}
+void IbApiClient::IbClient::nextValidId(const OrderId orderId) {
+    spdlog::get("console")->info("Next orderId:" + std::to_string(orderId));
+    m_orderId = orderId;
 }
