@@ -6,10 +6,8 @@ IbApiClient::IbClient::IbClient() : m_pClient(new EClientSocket(this, &m_osSigna
 }
 IbApiClient::IbClient::~IbClient() {
     disconnect();
-
     if (m_pReader)
         m_pReader.reset();
-
     delete m_pClient;
 }
 void IbApiClient::IbClient::connect(const char *host, const int &port, const int &clientId) {

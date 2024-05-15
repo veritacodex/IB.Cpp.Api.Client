@@ -1,4 +1,7 @@
 #include <IbClient.h>
+#include <ranges>
+
+#include "model/AccountSummaryTags.h"
 #include "utils/StringUtils.h"
 
 void IbApiClient::IbClient::managedAccounts(const std::string &accountsList) {
@@ -10,9 +13,16 @@ void IbApiClient::IbClient::managedAccounts(const std::string &accountsList) {
 }
 
 void IbApiClient::IbClient::accountSummary(int reqId, const std::string &account, const std::string &tag,
-                                           const std::string &value, const std::string &curency) {
-    spdlog::get("console")->info("Account summary");
+                                           const std::string &value, const std::string &currency) {
+    // if (tag == AccountSummaryTags::AccountType)
+    //     Accounts[account].accountType = value;
+    // else {
+    //     const std::string output = "Account:" + account + " tag:" + tag + " value:" + value;
+    //     spdlog::get("console")->info(output);
+    // }
 }
 void IbApiClient::IbClient::accountSummaryEnd(int reqId) {
-    spdlog::get("console")->info("Account summary end");
+    for (const Account &account: Accounts | std::ranges::views::values) {
+        spdlog::get("console")->info(account.toString());
+    }
 }

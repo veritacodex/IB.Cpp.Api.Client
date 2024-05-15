@@ -84,7 +84,7 @@ namespace IbApiClient {
                           double avgCost) override;
             void positionEnd() override;
             void accountSummary(int reqId, const std::string &account, const std::string &tag, const std::string &value,
-                                const std::string &curency) override;
+                                const std::string &currency) override;
             void accountSummaryEnd(int reqId) override;
             void verifyMessageAPI(const std::string &apiData) override;
             void verifyCompleted(bool isSuccessful, const std::string &errorText) override;
