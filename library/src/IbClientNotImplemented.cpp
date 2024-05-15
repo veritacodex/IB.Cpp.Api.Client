@@ -56,20 +56,6 @@ void IbApiClient::IbClient::connectionClosed() {
     std::cerr << "Error: function connectionClosed not implemented" << std::endl;
     throw NotImplementedException();
 }
-void IbApiClient::IbClient::updatePortfolio(const Contract &contract, Decimal position, double marketPrice,
-                                            double marketValue, double averageCost, double unrealizedPNL,
-                                            double realizedPNL, const std::string &accountName) {
-    std::cerr << "Error: function updatePortfolio not implemented" << std::endl;
-    throw NotImplementedException();
-}
-void IbApiClient::IbClient::updateAccountTime(const std::string &timeStamp) {
-    std::cerr << "Error: function updateAccountTime not implemented" << std::endl;
-    throw NotImplementedException();
-}
-void IbApiClient::IbClient::accountDownloadEnd(const std::string &accountName) {
-    std::cerr << "Error: function accountDownloadEnd not implemented" << std::endl;
-    throw NotImplementedException();
-}
 void IbApiClient::IbClient::contractDetails(int reqId, const ContractDetails &contractDetails) {
     std::cerr << "Error: function contractDetails not implemented" << std::endl;
     throw NotImplementedException();
