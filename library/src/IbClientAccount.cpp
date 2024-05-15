@@ -7,6 +7,7 @@ void IbApiClient::IbClient::managedAccounts(const std::string &accountsList) {
     spdlog::get("console")->info("Managed accounts:" + accountsList);
     for (auto &id: accounts) {
         m_accounts.try_emplace(id, id);
+        m_pClient->reqAccountUpdates(true, id);
     }
 }
 void IbApiClient::IbClient::accountSummary(int reqId, const std::string &account, const std::string &tag,
@@ -54,8 +55,13 @@ void IbApiClient::IbClient::accountSummary(int reqId, const std::string &account
     else if (tag == AccountSummaryTags::TotalCashValue)
         m_accounts[account].totalCashValue = stod(value);
     else {
-        spdlog::get("console")->error("Account summary tag not considered:" + tag);
+        spdlog::get("console")->error("Account summary tag not implemented:" + tag);
     }
+}
+void IbApiClient::IbClient::updateAccountValue(const std::string &key, const std::string &val,
+                                               const std::string &currency, const std::string &accountName) {
+    const std::string output = fmt::format("key:{} val:{} accountName:{} currency;{}", key, val, accountName, currency);
+    spdlog::get("console")->error(output);
 }
 void IbApiClient::IbClient::accountSummaryEnd(int reqId) {
     m_onAccountUpdateReceiver(m_accounts);

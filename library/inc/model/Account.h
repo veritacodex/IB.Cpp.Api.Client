@@ -32,7 +32,7 @@ namespace IbApiClient {
         explicit Account(std::string id): id(std::move(id)) {
         }
         [[nodiscard]] std::string toString() const {
-            std::string output = "Account summary (" + id + ")\n";
+            std::string output = "Account (" + id + ")\n";
             output += fmt::format("\tAccountType:{}\n", accountType);
             output += fmt::format("\tCushion:{}\n", std::to_string(cushion));
             output += fmt::format("\tLookAheadNextChange:{}\n", std::to_string(lookAheadNextChange));

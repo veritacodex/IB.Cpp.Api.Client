@@ -56,11 +56,6 @@ void IbApiClient::IbClient::connectionClosed() {
     std::cerr << "Error: function connectionClosed not implemented" << std::endl;
     throw NotImplementedException();
 }
-void IbApiClient::IbClient::updateAccountValue(const std::string &key, const std::string &val,
-                                               const std::string &currency, const std::string &accountName) {
-    std::cerr << "Error: function updateAccountValue not implemented" << std::endl;
-    throw NotImplementedException();
-}
 void IbApiClient::IbClient::updatePortfolio(const Contract &contract, Decimal position, double marketPrice,
                                             double marketValue, double averageCost, double unrealizedPNL,
                                             double realizedPNL, const std::string &accountName) {
