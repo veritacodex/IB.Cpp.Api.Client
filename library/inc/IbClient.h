@@ -10,7 +10,6 @@
 #include <spdlog/logger.h>
 #include <spdlog/spdlog.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
-
 #include "model/Account.h"
 
 namespace IbApiClient {
@@ -146,6 +145,9 @@ namespace IbApiClient {
                                     const std::string &timeZone,
                                     const std::vector<HistoricalSession> &sessions) override;
             void userInfo(int reqId, const std::string &whiteBrandingId) override;
+            void onAccountUpdate(void (*on_account_update_receiver)(const std::map<int, Account> &accounts)) {
+                OnAccountUpdateReceiver = on_account_update_receiver;
+            }
         private:
             EReaderOSSignal m_osSignal{2000};
             EClientSocket *const m_pClient;
@@ -156,7 +158,8 @@ namespace IbApiClient {
             bool m_extraAuth{false};
             std::string m_bboExchange;
             std::shared_ptr<spdlog::logger> consoleLogger;
-            std::map<std::string, Account, std::less<>> Accounts;
+            std::map<std::string, Account, std::less<> > Accounts;
+            void (*OnAccountUpdateReceiver)(const std::map<int, Account> &accounts);
     };
 }
 #endif

@@ -1,8 +1,16 @@
 #include <IbClient.h>
+#include <ranges>
+
+void onAccountUpdateReceiver(const std::map<int, IbApiClient::Account> &accounts) {
+    for (const auto &account: accounts | std::ranges::views::values) {
+        spdlog::get("console")->info(account.toString());
+    }
+}
 
 int main() {
     IbApiClient::IbClient client;
     client.connect("127.0.0.1", 4002, 0);
+    client.onAccountUpdate(onAccountUpdateReceiver);
     if (client.isConnected()) {
         client.requestAccountSummary();
     }
