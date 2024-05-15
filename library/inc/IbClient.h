@@ -18,10 +18,11 @@ namespace IbApiClient {
         public:
             IbClient();
             ~IbClient() override;
+            void requestAccountSummary() const;
+#pragma region IBKR functions
             void connect(const char *host, const int &port, const int &clientId);
             void disconnect() const;
-            bool isConnected() const;
-
+            [[nodiscard]] bool isConnected() const;
             void tickPrice(TickerId tickerId, TickType field, double price, const TickAttrib &attrib) override;
             void tickSize(TickerId tickerId, TickType field, Decimal size) override;
             void tickOptionComputation(TickerId tickerId, TickType tickType, int tickAttrib, double impliedVol, double delta,
@@ -144,9 +145,7 @@ namespace IbApiClient {
                                     const std::string &timeZone,
                                     const std::vector<HistoricalSession> &sessions) override;
             void userInfo(int reqId, const std::string &whiteBrandingId) override;
-            void requestAccountSummary() {
-                m_pClient->reqAccountSummary(RequestId::AccountRequestId, "All", AccountSummaryTags::getAllTags());
-            }
+#pragma endregion
         private:
             EReaderOSSignal m_osSignal{2000};
             EClientSocket *const m_pClient;

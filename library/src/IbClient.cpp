@@ -13,6 +13,10 @@ IbApiClient::IbClient::~IbClient() {
 
     delete m_pClient;
 }
+void IbApiClient::IbClient::requestAccountSummary() const {
+    spdlog::get("console")->info("Account summary requested");
+    m_pClient->reqAccountSummary(RequestId::AccountRequestId, "All", AccountSummaryTags::getAllTags());
+}
 
 void IbApiClient::IbClient::connect(const char *host, const int &port, const int &clientId) {
     const std::string message = "Connecting to host: " + static_cast<std::string>(host) + " on port:" + std::to_string(port) +
@@ -38,6 +42,7 @@ bool IbApiClient::IbClient::isConnected() const {
 }
 
 void IbApiClient::IbClient::connectAck() {
+    spdlog::get("console")->info("starting api");
     if (!m_extraAuth && m_pClient->asyncEConnect())
         m_pClient->startApi();
 }
