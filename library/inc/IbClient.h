@@ -145,8 +145,8 @@ namespace IbApiClient {
                                     const std::string &timeZone,
                                     const std::vector<HistoricalSession> &sessions) override;
             void userInfo(int reqId, const std::string &whiteBrandingId) override;
-            void onAccountUpdate(void (*on_account_update_receiver)(const std::map<int, Account> &accounts)) {
-                OnAccountUpdateReceiver = on_account_update_receiver;
+            void onAccountUpdate(const std::function<void(const std::map<std::string, Account, std::less<>> &accounts)> &onAccountUpdateReceiver) {
+                m_onAccountUpdateReceiver = onAccountUpdateReceiver;
             }
         private:
             EReaderOSSignal m_osSignal{2000};
@@ -158,8 +158,8 @@ namespace IbApiClient {
             bool m_extraAuth{false};
             std::string m_bboExchange;
             std::shared_ptr<spdlog::logger> consoleLogger;
-            std::map<std::string, Account, std::less<> > Accounts;
-            void (*OnAccountUpdateReceiver)(const std::map<int, Account> &accounts);
+            std::map<std::string, Account, std::less<>> m_accounts;
+            std::function<void(const std::map<std::string, Account, std::less<>> &accounts)> m_onAccountUpdateReceiver;
     };
 }
 #endif
