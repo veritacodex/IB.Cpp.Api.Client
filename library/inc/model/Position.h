@@ -6,7 +6,7 @@
 namespace IbApiClient {
     struct Position {
         Contract m_contract;
-        Decimal m_size{};
+        double m_size{};
         double m_marketPrice{};
         double m_marketValue{};
         double m_averageCost{};
@@ -17,7 +17,7 @@ namespace IbApiClient {
         explicit Position(Contract contract) : m_contract(std::move(contract)) {
         }
         void setValues(
-            const Decimal &size, const double &marketPrice, const double &marketValue,
+            const double &size, const double &marketPrice, const double &marketValue,
             const double &averageCost, const double &unrealizedPnl, const double &realizedPnl,
             const std::string &account) {
             this->m_size = size;
