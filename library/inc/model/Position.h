@@ -12,7 +12,7 @@ namespace IbApiClient {
         double m_averageCost{};
         double m_unrealizedPNL{};
         double m_realizedPNL{};
-        std::string m_account{};
+        std::string_view m_account{};
         Position() = default;
         explicit Position(Contract contract) : m_contract(std::move(contract)) {
         }
