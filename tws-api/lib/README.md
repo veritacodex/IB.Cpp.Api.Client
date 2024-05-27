@@ -1,0 +1,1 @@
+Build in this folder the Intel library for decimal types from https://www.intel.com/content/www/us/en/developer/articles/tool/intel-decimal-floating-point-math-library.html
