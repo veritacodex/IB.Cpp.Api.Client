@@ -402,3 +402,4 @@ cmake-build-default-system/
 tws-api/*.h
 tws-api/*.cpp
 tws-api/makefile
+tws-api/lib/*.so
