@@ -8,6 +8,7 @@
 #include <functional>
 #include <model/ConnectionState.h>
 #include <spdlog/logger.h>
+#include <spdlog/spdlog.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
 #include "model/Account.h"
 #include "model/Position.h"
