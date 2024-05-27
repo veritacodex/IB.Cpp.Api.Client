@@ -11,7 +11,7 @@ Steps and recommendations from Interactive Brokers:
 
    ```make CC=gcc CALL_BY_REF=0 GLOBAL_RND=0 GLOBAL_FLAGS=0 UNCHANGED_BINARY_FLAGS=0 rm *.o```
 
-3) As result there is libbid.a library generated.
+3) As a result libbid.a is generated.
 
 
    Note: in the sample above all build flags are set to 0. See IntelRDFPMathLib20U2/README for details.
@@ -28,6 +28,6 @@ Steps and recommendations from Interactive Brokers:
 3) In IntelRDFPMathLib20U2/LIBRARY execute the following command:
    ```make CC=gcc CALL_BY_REF=0 GLOBAL_RND=0 GLOBAL_FLAGS=0 UNCHANGED_BINARY_FLAGS=0 rm *.o```
 
-4) As result there is libbid.so library generated.
+4) As a result libbid.so is generated.
 
 Note: in the sample above all build flags are set to 0. See IntelRDFPMathLib20U2/README for details.
