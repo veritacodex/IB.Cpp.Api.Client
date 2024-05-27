@@ -350,7 +350,7 @@ void IbApiClient::IbClient::updateAccountValue(const std::string &key, const std
 void IbApiClient::IbClient::accountSummaryEnd(int reqId) {
     m_onAccountUpdateReceived(m_accounts);
 }
-void IbApiClient::IbClient::updatePortfolio(const Contract &contract, double position, double marketPrice, double marketValue,
+void IbApiClient::IbClient::updatePortfolio(const Contract &contract, Decimal position, double marketPrice, double marketValue,
                                             double averageCost, double unrealizedPNL, double realizedPNL, const std::string &accountName) {
     Position pos(contract);
     pos.setValues(position, marketPrice, marketValue, averageCost, unrealizedPNL, realizedPNL, accountName);

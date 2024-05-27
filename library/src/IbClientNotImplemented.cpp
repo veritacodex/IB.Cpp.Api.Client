@@ -6,7 +6,7 @@ void IbApiClient::IbClient::tickPrice(TickerId tickerId, TickType field, double 
     std::cerr << "Error: function tickPrice not implemented" << std::endl;
     throw NotImplementedException();
 }
-void IbApiClient::IbClient::tickSize(TickerId tickerId, TickType field, double size) {
+void IbApiClient::IbClient::tickSize(TickerId tickerId, TickType field, Decimal size) {
     std::cerr << "Error: function tickSize not implemented" << std::endl;
     throw NotImplementedException();
 }
@@ -32,7 +32,7 @@ void IbApiClient::IbClient::tickEFP(TickerId tickerId, TickType tickType, double
     std::cerr << "Error: function tickEFP not implemented" << std::endl;
     throw NotImplementedException();
 }
-void IbApiClient::IbClient::orderStatus(OrderId orderId, const std::string &status, double filled, double remaining,
+void IbApiClient::IbClient::orderStatus(OrderId orderId, const std::string &status, Decimal filled, Decimal remaining,
                                         double avgFillPrice, int permId, int parentId, double lastFillPrice,
                                         int clientId, const std::string &whyHeld,
                                         double mktCapPrice) {
@@ -77,12 +77,12 @@ void IbApiClient::IbClient::execDetailsEnd(int reqId) {
 }
 
 void IbApiClient::IbClient::updateMktDepth(TickerId id, int position, int operation, int side, double price,
-                                           double size) {
+                                           Decimal size) {
     std::cerr << "Error: function updateMktDepth not implemented" << std::endl;
     throw NotImplementedException();
 }
 void IbApiClient::IbClient::updateMktDepthL2(TickerId id, int position, const std::string &marketMaker, int operation,
-                                             int side, double price, double size, bool isSmartDepth) {
+                                             int side, double price, Decimal size, bool isSmartDepth) {
     std::cerr << "Error: function updateMktDepthL2 not implemented" << std::endl;
     throw NotImplementedException();
 }
@@ -120,7 +120,7 @@ void IbApiClient::IbClient::scannerDataEnd(int reqId) {
     throw NotImplementedException();
 }
 void IbApiClient::IbClient::realtimeBar(TickerId reqId, long time, double open, double high, double low, double close,
-                                        double volume, double wap, int count) {
+                                        Decimal volume, Decimal wap, int count) {
     std::cerr << "Error: function realtimeBar not implemented" << std::endl;
     throw NotImplementedException();
 }
@@ -148,7 +148,7 @@ void IbApiClient::IbClient::commissionReport(const CommissionReport &commissionR
     std::cerr << "Error: function commissionReport not implemented" << std::endl;
     throw NotImplementedException();
 }
-void IbApiClient::IbClient::position(const std::string &account, const Contract &contract, double position,
+void IbApiClient::IbClient::position(const std::string &account, const Contract &contract, Decimal position,
                                      double avgCost) {
     std::cerr << "Error: function position not implemented" << std::endl;
     throw NotImplementedException();
@@ -182,7 +182,7 @@ void IbApiClient::IbClient::verifyAndAuthCompleted(bool isSuccessful, const std:
     throw NotImplementedException();
 }
 void IbApiClient::IbClient::positionMulti(int reqId, const std::string &account, const std::string &modelCode,
-                                          const Contract &contract, double pos, double avgCost) {
+                                          const Contract &contract, Decimal pos, double avgCost) {
     std::cerr << "Error: function positionMulti not implemented" << std::endl;
     throw NotImplementedException();
 }
@@ -288,7 +288,7 @@ void IbApiClient::IbClient::pnl(int reqId, double dailyPnL, double unrealizedPnL
     std::cerr << "Error: function pnl not implemented" << std::endl;
     throw NotImplementedException();
 }
-void IbApiClient::IbClient::pnlSingle(int reqId, double pos, double dailyPnL, double unrealizedPnL, double realizedPnL,
+void IbApiClient::IbClient::pnlSingle(int reqId, Decimal pos, double dailyPnL, double unrealizedPnL, double realizedPnL,
                                       double value) {
     std::cerr << "Error: function pnlSingle not implemented" << std::endl;
     throw NotImplementedException();
@@ -306,14 +306,14 @@ void IbApiClient::IbClient::historicalTicksLast(int reqId, const std::vector<His
     std::cerr << "Error: function historicalTicksLast not implemented" << std::endl;
     throw NotImplementedException();
 }
-void IbApiClient::IbClient::tickByTickAllLast(int reqId, int tickType, time_t time, double price, double size,
+void IbApiClient::IbClient::tickByTickAllLast(int reqId, int tickType, time_t time, double price, Decimal size,
                                               const TickAttribLast &tickAttribLast, const std::string &exchange,
                                               const std::string &specialConditions) {
     std::cerr << "Error: function tickByTickAllLast not implemented" << std::endl;
     throw NotImplementedException();
 }
-void IbApiClient::IbClient::tickByTickBidAsk(int reqId, time_t time, double bidPrice, double askPrice, double bidSize,
-                                             double askSize, const TickAttribBidAsk &tickAttribBidAsk) {
+void IbApiClient::IbClient::tickByTickBidAsk(int reqId, time_t time, double bidPrice, double askPrice, Decimal bidSize,
+                                             Decimal askSize, const TickAttribBidAsk &tickAttribBidAsk) {
     std::cerr << "Error: function tickByTickBidAsk not implemented" << std::endl;
     throw NotImplementedException();
 }

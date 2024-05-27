@@ -1,5 +1,6 @@
 #include <IbClient.h>
 #include <memory>
+#include <spdlog/spdlog.h>
 
 IbApiClient::IbClient::IbClient() : m_pClient(new EClientSocket(this, &m_osSignal)) {
     consoleLogger = spdlog::stdout_color_mt("console");

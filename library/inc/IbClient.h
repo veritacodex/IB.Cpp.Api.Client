@@ -8,7 +8,6 @@
 #include <functional>
 #include <model/ConnectionState.h>
 #include <spdlog/logger.h>
-#include <spdlog/spdlog.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
 #include "model/Account.h"
 #include "model/Position.h"
@@ -25,7 +24,7 @@ namespace IbApiClient {
             void disconnect() const;
             [[nodiscard]] bool isConnected() const;
             void tickPrice(TickerId tickerId, TickType field, double price, const TickAttrib &attrib) override;
-            void tickSize(TickerId tickerId, TickType field, double size) override;
+            void tickSize(TickerId tickerId, TickType field, Decimal size) override;
             void tickOptionComputation(TickerId tickerId, TickType tickType, int tickAttrib, double impliedVol, double delta,
                                        double optPrice, double pvDividend, double gamma, double vega, double theta,
                                        double undPrice) override;
@@ -35,7 +34,7 @@ namespace IbApiClient {
                          const std::string &formattedBasisPoints, double totalDividends, int holdDays,
                          const std::string &futureLastTradeDate, double dividendImpact,
                          double dividendsToLastTradeDate) override;
-            void orderStatus(OrderId orderId, const std::string &status, double filled, double remaining,
+            void orderStatus(OrderId orderId, const std::string &status, Decimal filled, Decimal remaining,
                              double avgFillPrice, int permId, int parentId, double lastFillPrice, int clientId,
                              const std::string &whyHeld, double mktCapPrice) override;
             void openOrder(OrderId orderId, const Contract &, const Order &, const OrderState &) override;
@@ -44,7 +43,7 @@ namespace IbApiClient {
             void connectionClosed() override;
             void updateAccountValue(const std::string &key, const std::string &val, const std::string &currency,
                                     const std::string &accountName) override;
-            void updatePortfolio(const Contract &contract, double position, double marketPrice, double marketValue, double averageCost,
+            void updatePortfolio(const Contract &contract, Decimal position, double marketPrice, double marketValue, double averageCost,
                                  double unrealizedPNL, double realizedPNL, const std::string &accountName) override;
             void updateAccountTime(const std::string &timeStamp) override;
             void accountDownloadEnd(const std::string &accountName) override;
@@ -57,9 +56,9 @@ namespace IbApiClient {
             void error(int id, int errorCode, const std::string &errorString,
                        const std::string &advancedOrderRejectJson) override;
             void updateMktDepth(TickerId id, int position, int operation, int side, double price,
-                                double size) override;
+                                Decimal size) override;
             void updateMktDepthL2(TickerId id, int position, const std::string &marketMaker, int operation, int side,
-                                  double price, double size, bool isSmartDepth) override;
+                                  double price, Decimal size, bool isSmartDepth) override;
             void updateNewsBulletin(int msgId, int msgType, const std::string &newsMessage,
                                     const std::string &originExch) override;
             void managedAccounts(const std::string &accountsList) override;
@@ -72,14 +71,14 @@ namespace IbApiClient {
                              const std::string &legsStr) override;
             void scannerDataEnd(int reqId) override;
             void realtimeBar(TickerId reqId, long time, double open, double high, double low, double close,
-                             double volume, double wap, int count) override;
+                             Decimal volume, Decimal wap, int count) override;
             void currentTime(long time) override;
             void fundamentalData(TickerId reqId, const std::string &data) override;
             void deltaNeutralValidation(int reqId, const DeltaNeutralContract &deltaNeutralContract) override;
             void tickSnapshotEnd(int reqId) override;
             void marketDataType(TickerId reqId, int marketDataType) override;
             void commissionReport(const CommissionReport &commissionReport) override;
-            void position(const std::string &account, const Contract &contract, double position,
+            void position(const std::string &account, const Contract &contract, Decimal position,
                           double avgCost) override;
             void positionEnd() override;
             void accountSummary(int reqId, const std::string &account, const std::string &tag, const std::string &value,
@@ -93,7 +92,7 @@ namespace IbApiClient {
             void verifyAndAuthCompleted(bool isSuccessful, const std::string &errorText) override;
             void connectAck() override;
             void positionMulti(int reqId, const std::string &account, const std::string &modelCode,
-                               const Contract &contract, double pos, double avgCost) override;
+                               const Contract &contract, Decimal pos, double avgCost) override;
             void positionMultiEnd(int reqId) override;
             void accountUpdateMulti(int reqId, const std::string &account, const std::string &modelCode,
                                     const std::string &key, const std::string &value,
@@ -125,16 +124,16 @@ namespace IbApiClient {
             void rerouteMktDepthReq(int reqId, int conid, const std::string &exchange) override;
             void marketRule(int marketRuleId, const std::vector<PriceIncrement> &priceIncrements) override;
             void pnl(int reqId, double dailyPnL, double unrealizedPnL, double realizedPnL) override;
-            void pnlSingle(int reqId, double pos, double dailyPnL, double unrealizedPnL, double realizedPnL,
+            void pnlSingle(int reqId, Decimal pos, double dailyPnL, double unrealizedPnL, double realizedPnL,
                            double value) override;
             void historicalTicks(int reqId, const std::vector<HistoricalTick> &ticks, bool done) override;
             void historicalTicksBidAsk(int reqId, const std::vector<HistoricalTickBidAsk> &ticks, bool done) override;
             void historicalTicksLast(int reqId, const std::vector<HistoricalTickLast> &ticks, bool done) override;
-            void tickByTickAllLast(int reqId, int tickType, time_t time, double price, double size,
+            void tickByTickAllLast(int reqId, int tickType, time_t time, double price, Decimal size,
                                    const TickAttribLast &tickAttribLast, const std::string &exchange,
                                    const std::string &specialConditions) override;
-            void tickByTickBidAsk(int reqId, time_t time, double bidPrice, double askPrice, double bidSize,
-                                  double askSize, const TickAttribBidAsk &tickAttribBidAsk) override;
+            void tickByTickBidAsk(int reqId, time_t time, double bidPrice, double askPrice, Decimal bidSize,
+                                  Decimal askSize, const TickAttribBidAsk &tickAttribBidAsk) override;
             void tickByTickMidPoint(int reqId, time_t time, double midPoint) override;
             void orderBound(long long orderId, int apiClientId, int apiOrderId) override;
             void completedOrder(const Contract &contract, const Order &order, const OrderState &orderState) override;
