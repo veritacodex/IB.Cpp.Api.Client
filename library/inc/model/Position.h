@@ -33,7 +33,7 @@ namespace IbApiClient {
             std::string output = "Position (" + std::to_string(m_contract.conId) + ")\n";
             output += fmt::format("\tAccount:{}\n", m_account);
             output += fmt::format("\tSymbol:{}\n", m_contract.symbol);
-            output += fmt::format("\tSize:{}\n", m_size);
+            output += fmt::format("\tSize:{}\n", decimalToString(m_size));
             output += fmt::format("\tMarket Price:{}\n", m_marketPrice);
             output += fmt::format("\tMarket Value:{}\n", m_marketValue);
             output += fmt::format("\tAverage Cost:{}\n", m_averageCost);
