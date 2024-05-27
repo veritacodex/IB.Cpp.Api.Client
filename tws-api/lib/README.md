@@ -7,9 +7,10 @@ Steps and recommendations from Interactive Brokers:
 1) Extract [Intel Decimal Floating Point Library](https://www.intel.com/content/www/us/en/developer/articles/tool/intel-decimal-floating-point-math-library.html)
    to some directory
 
-2) In IntelRDFPMathLib20U2/LIBRARY execute the following command:
+2) In IntelRDFPMathLib20U2/LIBRARY execute the following commands:
 
-   ```make CC=gcc CALL_BY_REF=0 GLOBAL_RND=0 GLOBAL_FLAGS=0 UNCHANGED_BINARY_FLAGS=0 rm *.o```
+   ```make CC=gcc CALL_BY_REF=0 GLOBAL_RND=0 GLOBAL_FLAGS=0 UNCHANGED_BINARY_FLAGS=0```
+   ```rm *.o```
 
 3) As a result libbid.a is generated.
 
@@ -27,7 +28,8 @@ Steps and recommendations from Interactive Brokers:
 
 3) In IntelRDFPMathLib20U2/LIBRARY execute the following command:
 
-   ```make CC=gcc CALL_BY_REF=0 GLOBAL_RND=0 GLOBAL_FLAGS=0 UNCHANGED_BINARY_FLAGS=0 rm *.o```
+   ```make CC=gcc CALL_BY_REF=0 GLOBAL_RND=0 GLOBAL_FLAGS=0 UNCHANGED_BINARY_FLAGS=0```
+   ```rm *.o```
 
 4) As a result libbid.so is generated.
 
