@@ -1,0 +1,2 @@
+SET(TWSAPI_SRC ${CMAKE_SOURCE_DIR}/tws-api)
+ADD_LIBRARY(TwsApiClient EClient.cpp ${TWSAPI_SRC})
