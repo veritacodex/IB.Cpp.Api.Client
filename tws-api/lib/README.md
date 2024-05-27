@@ -26,6 +26,7 @@ Steps and recommendations from Interactive Brokers:
    -  Line 377: change $(AR_CMD) $(AR_OUT)$@ $^ to gcc -o $@ $^ -shared
 
 3) In IntelRDFPMathLib20U2/LIBRARY execute the following command:
+
    ```make CC=gcc CALL_BY_REF=0 GLOBAL_RND=0 GLOBAL_FLAGS=0 UNCHANGED_BINARY_FLAGS=0 rm *.o```
 
 4) As a result libbid.so is generated.
