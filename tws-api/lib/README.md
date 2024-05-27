@@ -21,9 +21,9 @@ Steps and recommendations from Interactive Brokers:
    to some directory
 
 2) In IntelRDFPMathLib20U2/LIBRARY modify "makefile":
-   - Line 112: change _CFLAGS_OPT := to _CFLAGS_OPT := -fPIC
-   -  Line 370: change BID_LIB = $(LIB_DIR)/libbid.$A to BID_LIB = $(LIB_DIR)/libbid.so
-   -  Line 377: change $(AR_CMD) $(AR_OUT)$@ $^ to gcc -o $@ $^ -shared
+   - Line 112: change ```_CFLAGS_OPT :=``` to``` _CFLAGS_OPT := -fPIC```
+   -  Line 370: change ```BID_LIB = $(LIB_DIR)/libbid.$A``` to ```BID_LIB = $(LIB_DIR)/libbid.so```
+   -  Line 377: change ```$(AR_CMD) $(AR_OUT)$@ $^``` to ```gcc -o $@ $^ -shared```
 
 3) In IntelRDFPMathLib20U2/LIBRARY execute the following command:
 
