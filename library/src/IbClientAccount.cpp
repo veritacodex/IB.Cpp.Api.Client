@@ -9,7 +9,6 @@ void IbApiClient::IbClient::managedAccounts(const std::string &accountsList) {
     spdlog::get("console")->info("Managed accounts:" + accountsList);
     for (auto &id: accounts) {
         m_accounts.try_emplace(id, id);
-
         spdlog::get("console")->info("Account updates requested");
         m_pClient->reqAccountUpdates(true, id);
     }
