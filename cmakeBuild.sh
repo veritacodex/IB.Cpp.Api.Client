@@ -4,6 +4,6 @@ clear
 rm -rf build
 mkdir build
 cd build || exit
-cmake ..
+/usr/bin/cmake ..
 make
 cd ..
