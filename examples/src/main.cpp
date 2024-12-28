@@ -15,7 +15,7 @@ void onPortfolioUpdateReceived(const std::map<long, IbApiClient::Position, std::
 
 int main() {
     IbApiClient::IbClient client;
-    client.connect("127.0.0.1", 4002, 0);
+    client.connect("127.0.0.1", 4001, 0);
     client.onAccountUpdate(onAccountUpdateReceived);
     client.onPortfolioUpdate(onPortfolioUpdateReceived);
     while(client.isConnected()) {
