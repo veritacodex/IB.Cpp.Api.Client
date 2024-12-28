@@ -7,5 +7,3 @@ cd build || exit
 cmake ..
 make
 cd ..
-
-
